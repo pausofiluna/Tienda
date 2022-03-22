@@ -33,13 +33,13 @@ public class PersonaService implements ipersonaservice{
         }
 
     @Override
-    public Persona getPersonById(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Persona getPersonaById(long id) {
+        return personarepository.findById(id).orElse(null);
     }
-
-    @Override
-    public void delete(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+  @Override        
+  public void delete(long id) {
+        personarepository.deleteById(id);
     }
-}
-
+  }
+ 

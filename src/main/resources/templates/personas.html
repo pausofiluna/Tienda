@@ -1,19 +1,49 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>TODO supply a title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<h1 th:text="${titulo}"></h1>
-<table>
-<th:block th:each="user : ${personas}">
-<tr>
-<td th:text="${user.getApellido1}"></td>
-<td th:text="${user.getEmail}"></td>
-</tr>
-</th:block>
-</table>
-</body>
+    <head th:replace="layout/plantilla :: head">
+        
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <h1 th:text="${Titulo}"></h1>
+        
+        <a class="btn btn-outline-info" th:href="@{/nuevaPersona}" role="button">Nuevas Persona</a>
+        <div th:if="${personas != null and !personas.empty}">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>IdPais</th>
+                <th>Eliminar</th>
+                <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <th:block th:each="user : ${personas}"> 
+                  <tr>  
+                    <td th:text="${user.getId}"></td>
+                    <td th:text="${user.getNombre}"></td>
+                    <td th:text="${user.getApellido1}"></td>
+                    <td th:text="${user.getApellido2}"></td>
+                    <td th:text="${user.getTelefono}"></td>
+                    <td th:text="${user.getEmail}"></td>
+                    <td th:text="${user.Pais.getPais}"></td>
+                    <td><a th:href="@{/eliminar/{id}(id=${user.getId})}"> Eliminar</a></td>
+                    <td><a th:href="@{/modificar/{id}(id=${user.getId})}"> Modificar</a></td>
+                 </tr>
+                </th:block>                
+                
+            </tbody>
+        </table>
+        </div>
+        <div th:if="${personas == null or personas.empty}">
+            No tenemos lista de personas que mostrar...
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
 </html>

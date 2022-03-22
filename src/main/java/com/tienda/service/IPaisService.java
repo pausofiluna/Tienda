@@ -4,14 +4,13 @@
  */
 package com.tienda.service;
 
-import com.tienda.entity.Persona;
+import com.tienda.entity.Pais;
 import java.util.List;
 
 
-public interface ipersonaservice {
-    public List<Persona> getAllPerson();
-    public void savePerson(Persona persona);
-    public Persona getPersonaById(long id);
-    public void delete (long id);
+public interface IPaisService {
+    
+    public List<Pais> listCountry();
+    
     
 }

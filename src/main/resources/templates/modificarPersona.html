@@ -1,0 +1,42 @@
+
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="layout/plantilla :: head">
+    </head>
+    <body>
+        
+        <header th:replace="layout/plantilla :: header"/>
+        <h1>Datos Personales</h1>
+        <a th:href="@{/personas}">Regresar</a>
+        <br>
+        <form th:action="@{/guardarPersona}" method="post"@ th:object="${persona}">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/> 
+            <br>
+            <label for="apellido1">Apellido1:</label>
+            <input type="text" name="apellido1" th:field="*{apellido1}"/>
+            <br>
+            <label for="apellido2">Apellido2:</label>
+            <input type="text" name="apellido2" th:field="*{apellido2}"/>
+            <br>
+            <label for="telefono">Telefono:</label>
+            <input type="tel" name="telefono" th:field="*{telefono}"/> 
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" th:field="*{email}"/> 
+            <br>
+                <label for="pais">Pais:</label>
+                <select th:field="*{pais}">
+                    <option th:each="x:${paises}"
+                            th:value="${x.id}"
+                            th:text="${x.pais}"/>
+                    
+                </select>
+            <br>
+            <input type="submit" name="guardar" value="Guardar"/> 
+        </form>
+             <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

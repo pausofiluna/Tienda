@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+   
+    <head th:replace="layout/plantilla :: head">
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla :: header"/>
+        <a th:href="@{/personas}">Regresar</a>
+        <form class="row g-3" th:action="@{/guardarPersona}" method="post"@ th:object="${persona}">
+             <input type="hidden" name="id" th:field="*{id}"/>
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="validationDefault01" value=""  th:field="*{nombre}" required>
+            </div>
+            <div class="col-md-3">
+                <label for="validationDefault02" class="form-label">Apellido1</label>
+                <input type="text" class="form-control" id="validationDefault02" value="" th:field="*{apellido1}" required>
+            </div>
+            <div class="col-md-3">
+                <label for="validationDefault03" class="form-label">Apellido2</label>
+                <input type="text" class="form-control" id="validationDefaultUsername"  value="" th:field="*{apellido2}" required>
+            </div>
+            <div class="col-md-3">
+                <label for="validationDefault04" class="form-label">Telefono</label>
+                <input type="text" class="form-control" id="validationDefault03" th:field="*{telefono}" required>
+            </div>
+            <div class="col-md-5">
+                <label for="validationDefaultUsername" class="form-label">Email</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                    <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" th:field="*{email}" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="validationDefault05" class="form-label">Paises</label>
+                <select class="form-select" id="validationDefault04" th:field="*{pais}" required>
+                    <option selected disabled value="" >Seleccione...</option>
+                    <option th:each="x:${paises}"
+                            th:value="${x.id}"
+                            th:text="${x.pais}">...</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                        <label class="form-check-label" for="invalidCheck2">
+                            Agree to terms and conditions
+                        </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+        </form>
+    </body>
+</html>
