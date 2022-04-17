@@ -40,7 +40,9 @@ public class personascontroller {
   
   @GetMapping("/nuevaPersona")
    public String crearPersona(Model model){
+   List<Pais> listaPais=paisService.listCountry();
    model.addAttribute("persona", new Persona());
+   model.addAttribute("paises", listaPais);
    return "crear";
    }
    

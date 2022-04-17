@@ -7,7 +7,7 @@
     <body>
         
         <header th:replace="layout/plantilla :: header"/>
-        <h1>Datos Personales</h1>
+        <h2 th:text="#{articulo.datos}">Datos Personales</h2>
         <a th:href="@{/personas}">Regresar</a>
         <br>
         <form th:action="@{/guardarPersona}" method="post"@ th:object="${persona}">

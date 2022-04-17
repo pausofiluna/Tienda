@@ -4,6 +4,8 @@
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+            <h2 th:text="#{personas.titulo}">Personas</h2>
         <h1 th:text="${Titulo}"></h1>
         
         <a class="btn btn-outline-info" th:href="@{/nuevaPersona}" role="button">Nuevas Persona</a>
@@ -11,15 +13,15 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Apellido</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>IdPais</th>
-                <th>Eliminar</th>
-                <th>Modificar</th>
+                <th th:text="#{articulo.id}">ID</th>
+                <th th:text="#{articulo.nombre}">Nombre</th>
+                <th th:text="#{articulo.apellido}">Apellido</th>
+                <th th:text="#{articulo.apellido}">Apellido</th>
+                <th th:text="#{articulo.telefono}">Telefono</th>
+                <th th:text="#{articulo.email}">Email</th>
+                <th th:text="#{articulo.idpais}">IdPais</th>
+                <th th:text="#{articulo.eliminar}">Eliminar</th>
+                <th th:text="#{articulo.modificar}">Modificar</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,15 +35,15 @@
                     <td th:text="${user.getTelefono}"></td>
                     <td th:text="${user.getEmail}"></td>
                     <td th:text="${user.Pais.getPais}"></td>
-                    <td><a th:href="@{/eliminar/{id}(id=${user.getId})}"> Eliminar</a></td>
-                    <td><a th:href="@{/modificar/{id}(id=${user.getId})}"> Modificar</a></td>
+                    <td><a th:href="@{/eliminar/{id}(id=${user.getId})}" th:text="#{accion.eliminar}"> Eliminar</a></td>
+                    <td><a th:href="@{/modificar/{id}(id=${user.getId})}" th:text="#{accion.agregar}"> Modificar</a></td>
                  </tr>
                 </th:block>                
                 
             </tbody>
         </table>
         </div>
-        <div th:if="${personas == null or personas.empty}">
+        <div th:if="${personas == null or personas.empty}" th:text="#{articulo.no_mostrar}">
             No tenemos lista de personas que mostrar...
         </div>
         <footer th:replace="layout/plantilla :: footer"/>

@@ -50,8 +50,10 @@
             </div>
         </nav>
         </header>      
-        <footer th:fragment="footer">
-            <p>&Copy Derechos Reservados 2022</p>
+        <footer th:fragment="footer" class="footer">
+            <p>&Copy [[#{plantilla.derechos}]]
+            <a th:href="@[/(lang-en)}">ES</a>
+            <a th:href="@[/(lang-en)}">ES</a></p>
         </footer>
         
     </body>
